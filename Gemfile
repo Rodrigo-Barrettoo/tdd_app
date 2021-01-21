@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+gem 'rails-i18n', '~> 5.0.4'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -39,6 +41,7 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.6'
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do
