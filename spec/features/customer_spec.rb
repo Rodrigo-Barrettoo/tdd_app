@@ -44,14 +44,7 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'Mostra um cliente' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['S', 'N'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
-
+    customer = create(:customer)
     visit(customer_path(customer.id))
     expect(page).to have_content(customer.name)
   end
@@ -78,14 +71,7 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'Atualiza um Cliente' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['S', 'N'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
-
+    customer = create(:customer)
     new_name = Faker::Name.name
     visit(edit_customer_path(customer.id))
     fill_in('customer_name', with: new_name)
@@ -97,14 +83,7 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'Link Mostrar' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['S', 'N'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
-
+    customer = create(:customer)
     visit(customers_path)
 
     find(:xpath, "/html/body/table/tbody/tr/td[2]/a").click
@@ -112,14 +91,7 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'Link Editar' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['S', 'N'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
-
+    customer = create(:customer)
     visit(customers_path)
 
     find(:xpath, "/html/body/table/tbody/tr/td[3]/a").click
@@ -127,14 +99,7 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'Link Excluir', js: true do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['S', 'N'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
-
+    customer = create(:customer)
     visit(customers_path)
     find(:xpath, "/html/body/table/tbody/tr/td[4]/a").click
 
